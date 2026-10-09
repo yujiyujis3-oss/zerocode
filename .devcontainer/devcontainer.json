@@ -1,0 +1,35 @@
+{
+  "name": "zerocode",
+  "image": "mcr.microsoft.com/devcontainers/php:8.4",
+  "containerEnv": {
+    "XDEBUG_MODE": "off",
+    "LANG": "C.UTF-8",
+    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL": "1"
+  },
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/home/vscode/.local/bin"
+  },
+  "onCreateCommand": "bash .devcontainer/setup-ai.sh",
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": {
+      "label": "アプリ",
+      "onAutoForward": "notify"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.live-server"
+      ],
+      "settings": {
+        "files.autoSave": "afterDelay",
+        "workbench.startupEditor": "none",
+        "livePreview.serverRoot": "practice",
+        "livePreview.openPreviewTarget": "External Browser",
+        "git.showPushSuccessNotification": true,
+        "chat.disableAIFeatures": true
+      }
+    }
+  }
+}
